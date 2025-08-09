@@ -5,6 +5,7 @@
 #include "spawer.h"
 #include "screen/ui_mouse.h"
 #include "world/spell.h"
+#include "screen/hud_stats.h"
 
 void SceneMain::init()
 {
@@ -23,12 +24,7 @@ void SceneMain::init()
     addChild(spawer_);
 
     ui_mouse_ = UIMouse::addUIMouseChild(this, "assets/UI/29.png", "assets/UI/30.png", 1.0f, Anchor::CENTER);
-
-    // auto enemy = new Enemy();
-    // enemy->init();
-    // enemy->setTarget(player_);
-    // enemy->setPosition(world_size_ / 2.0f + glm::vec2(200.0f));
-    // Effect::addEffectChild(this, "assets/effect/184_3.png", world_size_ / 2.0f + glm::vec2(200.0f), 2.0f, enemy);
+    hud_ststs_ = HUDStats::addHUDStatsChild(this, player_, glm::vec2(30.f));
 }
 
 void SceneMain::handleEvents(SDL_Event &event)

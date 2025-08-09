@@ -4,12 +4,14 @@
 class Player;
 class Spawer;
 class UIMouse;
+class HUDStats;
 class SceneMain : public Scene
 {
 
     Player *player_ = nullptr;
     Spawer *spawer_ = nullptr;
     UIMouse *ui_mouse_ = nullptr;
+    HUDStats* hud_ststs_ = nullptr;
 
 public:
     SceneMain() = default;

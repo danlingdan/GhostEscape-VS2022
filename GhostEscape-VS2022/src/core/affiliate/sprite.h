@@ -20,6 +20,7 @@ protected:
     bool is_loop_ = true;
     bool is_finsh_ = false;
 
+    glm::vec2 percentage_ = glm::vec2(1);
 public:
     Sprite() = default;
 
@@ -42,4 +43,6 @@ public:
     auto getIsFinish() const { return is_finsh_; }
     void setIsLoop(bool loop) { is_loop_ = loop; }
     void setIsFinish(bool finish) { is_finsh_ = finish; }
+    auto getPercentage() const { return percentage_; }
+    void setPercentage(const glm::vec2& percentage) { percentage_ = percentage; }
 };
