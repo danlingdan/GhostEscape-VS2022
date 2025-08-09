@@ -133,15 +133,15 @@ void Game::renderTexture(const Texture &texture, const glm::vec2 &position, cons
 {
     SDL_FRect src_rect = {
         texture.src_rect.x,
-        texture.src_rect.y,
-        texture.src_rect.w * mask.x,
-        texture.src_rect.h * mask.y
+        texture.src_rect.y + texture.src_rect.h * (1 - mask.y),
+        texture.src_rect.w* mask.x,
+        texture.src_rect.h* mask.y
     };
     SDL_FRect dst_rect = {
         position.x,
-        position.y,
-        size.x * mask.x,
-        size.y * mask.y
+        position.y + size.y * (1 - mask.y),
+        size.x* mask.x,
+        size.y* mask.y
     };
     SDL_RenderTextureRotated(renderer_, texture.texture, &src_rect, &dst_rect, texture.angle, nullptr, texture.is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }

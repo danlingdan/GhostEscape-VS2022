@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\screen\hud_skill.cpp" />
     <ClCompile Include="src\screen\hud_stats.cpp" />
     <ClCompile Include="src\core\actor.cpp" />
     <ClCompile Include="src\core\affiliate\affiliate_bar.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\world\spell.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\screen\hud_skill.h" />
     <ClInclude Include="src\screen\hud_stats.h" />
     <ClInclude Include="src\core\actor.h" />
     <ClInclude Include="src\core\affiliate\affiliate_bar.h" />
