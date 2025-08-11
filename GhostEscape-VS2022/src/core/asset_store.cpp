@@ -53,7 +53,7 @@ SDL_Texture *AssetStore::getImage(const std::string &file_path)
     auto iter = textures_.find(file_path);
     if (iter == textures_.end())
     {
-        // SDL_Log("Loading image: %s", file_path.c_str());
+         //SDL_Log("Loading image: %s", file_path.c_str());
         loadImage(file_path);
         iter = textures_.find(file_path);
     }
@@ -62,7 +62,7 @@ SDL_Texture *AssetStore::getImage(const std::string &file_path)
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get image:%s\n", file_path.c_str());
         return nullptr;
     }
-    // SDL_Log("Successfully got image: %s", file_path.c_str());
+     //SDL_Log("Successfully got image: %s", file_path.c_str());
     return iter->second;
 }
 

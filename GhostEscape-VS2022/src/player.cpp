@@ -16,8 +16,6 @@ void Player::init()
     stats_ = Stats::addStatsChild(this);
     effect_ = Effect::addEffectChild(nullptr, "assets/effect/1764.png", glm::vec2(0), 2.0f, nullptr);
     weapon_thunder_ = WeaponThunder::addWeaponThunderChild(this, 1.0f, 20.0f);
-
-    TextLabel::addTextLabelChild(this, "123456", "assets/font/VonwaonBitmap-16px.ttf", 16, Anchor::CENTER);
 }
 
 void Player::handleEvents(SDL_Event &event)
@@ -72,6 +70,13 @@ void Player::syncCamera()
     game_.getCurrentScene()->setCameraPosition(position_ - game_.getScreenSize() / 2.0f);
 }
 
+void Player::takeDamage(float damage)
+{
+    if (!stats_ || stats_->getIsInvinsible()) return;
+    Actor::takeDamage(damage);
+    game_.playSound("assets/sound/hit-flesh-02-266309.mp3");
+}
+
 void Player::checkStates()
 {
     // is filp?
@@ -120,5 +125,6 @@ void Player::checkIsDead()
         game_.getCurrentScene()->safeAddChild(effect_);
         effect_->setPosition(getPosition());
         setActive(false);
+        game_.playSound("assets/sound/female-scream-02-89290.mp3");
     }
 }

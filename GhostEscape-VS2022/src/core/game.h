@@ -38,6 +38,8 @@ class Game
     glm::vec2 mouse_position_ = glm::vec2(0);
     SDL_MouseButtonFlags mouse_buttons_ = 0;
 
+    int score_ = 0;
+    int high_score_ = 0;
 public:
     static Game &getInstance()
     {
@@ -76,4 +78,21 @@ public:
     SDL_MouseButtonFlags getMouseButtons() const { return mouse_buttons_; }
 
     // setter
+
+    // Score
+    void setScore(int score);
+    int getScore() const { return score_; }
+    void setHighScore(int high_score) { high_score_ = high_score; }
+    int getHighScore() const { return high_score_; }
+    void addScore(int score);
+
+    // sound
+    void playMusic(const std::string& music_path, bool loop = true) { Mix_PlayMusic(asset_store_->getMusic(music_path), loop ? -1 : 0); } //-1 infinite loop
+    void playSound(const std::string& sound_path) { Mix_PlayChannel(-1, asset_store_->getSound(sound_path), 0); }
+    void stopMusic() { Mix_HaltMusic(); }
+    void stopSound() { Mix_HaltChannel(-1); }       // all sound
+    void pauseMusic() { Mix_PauseMusic(); }
+    void pauseSound() { Mix_Pause(-1); }
+    void resumeMusic() { Mix_ResumeMusic(); }
+    void resumeSound() { Mix_Resume(-1); }
 };

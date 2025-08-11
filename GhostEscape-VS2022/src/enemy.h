@@ -18,6 +18,8 @@ class Enemy : public Actor
     SpriteAnim *anim_die_ = nullptr;
     SpriteAnim *current_anim_ = nullptr;
 
+    int score_ = 10;  // 击败敌人获得的分数
+
 public:
     static Enemy *addEnemyChild(Object *parent, glm::vec2 pos, Player *target);
     virtual void init() override;

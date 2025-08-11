@@ -212,3 +212,16 @@ void Game::drawBoundary(const glm::vec2 &top_left, const glm::vec2 &botton_right
     }
     SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1);
 }
+
+void Game::setScore(int score)
+{
+    score_ = score;
+    if (score_ > high_score_) {
+        high_score_ = score_;
+    }
+}
+
+void Game::addScore(int score)
+{
+    setScore(score_ + score);
+}

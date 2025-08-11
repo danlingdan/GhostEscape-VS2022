@@ -27,6 +27,8 @@ public:
 
     void syncCamera();
 
+    virtual void takeDamage(float damage) override;
+
     void checkStates();
     void changStates(bool);
 
