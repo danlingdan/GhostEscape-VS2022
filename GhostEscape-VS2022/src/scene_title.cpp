@@ -1,0 +1,55 @@
+#include "scene_title.h"
+#include "screen/hud_text.h"
+#include <cmath>
+
+
+void SceneTitle::init()
+{
+    Scene::init();
+
+    auto size = glm::vec2(game_.getScreenSize().x / 2.0f, game_.getScreenSize().y / 3.0f);
+    HUDText::addHUDTextChild(this, "幽 灵 逃 生", game_.getScreenSize() / 2.0f - glm::vec2(0, 100), size, "assets/font/VonwaonBitmap-16px.ttf", 64);
+    auto score_text = "最高分: " + std::to_string(game_.getHighScore());
+    HUDText::addHUDTextChild(this, score_text, game_.getScreenSize() / 2.0f + glm::vec2(0, 100), glm::vec2(200, 50), "assets/font/VonwaonBitmap-16px.ttf", 32);
+
+}
+
+void SceneTitle::handleEvents(SDL_Event& event)
+{
+    Scene::handleEvents(event);
+}
+
+void SceneTitle::update(float dt)
+{
+    Scene::update(dt);
+    color_timer_ += dt;
+    updateColor();
+}
+
+void SceneTitle::render()
+{
+    renderTitleBackground();
+    Scene::render();
+}
+
+void SceneTitle::clean()
+{
+    Scene::clean();
+}
+
+void SceneTitle::renderTitleBackground()
+{
+
+    auto screen_size = game_.getScreenSize();
+    glm::vec2 top_left = glm::vec2(30.0f, 30.0f);
+    glm::vec2 bottom_right = glm::vec2(screen_size.x - 30.0f, screen_size.y - 30.0f);
+    game_.drawBoundary(top_left, bottom_right, 10.0f, boundary_color_);
+
+}
+
+void SceneTitle::updateColor()
+{
+    boundary_color_.r = 0.5f + 0.5f * sinf(color_timer_ * 0.9f);
+    boundary_color_.g = 0.5f + 0.5f * sinf(color_timer_ * 0.8f);
+    boundary_color_.b = 0.5f + 0.5f * sinf(color_timer_ * 0.7f);
+}

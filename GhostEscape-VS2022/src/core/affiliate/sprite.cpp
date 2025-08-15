@@ -5,8 +5,9 @@ Sprite *Sprite::addSpriteChild(ObjectScreen *parent, const std::string &file_pat
     auto speite = new Sprite();
     speite->init();
     speite->setTexture(Texture(file_path));
-    speite->setScale(scale);
     speite->setParent(parent);
+    speite->setAnchor(anchor);
+    speite->setScale(scale);
     parent->addChild(speite);
     return speite;
 }

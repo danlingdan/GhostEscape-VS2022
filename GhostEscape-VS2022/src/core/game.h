@@ -58,7 +58,7 @@ public:
     void renderFillCircle(const glm::vec2 &position, const glm::vec2 &size, float alpha);
     void renderHBar(const glm::vec2 &position, const glm::vec2 &size, float percent, SDL_FColor fcolor);
 
-    TTF_Text* CreateTTFText(const std::string& text, const std::string& font_path, int font_size = 16);
+    TTF_Text* createTTF_Text(const std::string& text, const std::string& font_path, int font_size = 16);
 
     // random number generater
     float randomFloat(float min, float max) { return std::uniform_real_distribution<float>(min, max)(gen_); }

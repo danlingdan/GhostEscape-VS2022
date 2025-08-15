@@ -1,6 +1,7 @@
 #include "game.h"
 #include "../scene_main.h"
 #include "affiliate/sprite.h"
+#include "../scene_title.h"
 
 void Game::run()
 {
@@ -65,7 +66,8 @@ void Game::init(std::string title, int width, int height)
 
     asset_store_ = new AssetStore(renderer_);
 
-    current_scene_ = new SceneMain();
+    //current_scene_ = new SceneMain();
+    current_scene_ = new SceneTitle();
     current_scene_->init();
 }
 
@@ -180,7 +182,7 @@ void Game::renderHBar(const glm::vec2 &position, const glm::vec2 &size, float pe
     SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1);
 }
 
-TTF_Text* Game::CreateTTFText(const std::string& text, const std::string& font_path, int font_size)
+TTF_Text* Game::createTTF_Text(const std::string& text, const std::string& font_path, int font_size)
 {
     auto font = asset_store_->getFont(font_path, font_size);
     return TTF_CreateText(ttf_engine_, font, text.c_str(), 0);

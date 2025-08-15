@@ -78,6 +78,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(SolutionDir)GhostEscape-VS2022\vendor\SDL3\include;$(SolutionDir)GhostEscape-VS2022\vendor\glm\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -94,6 +95,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(SolutionDir)GhostEscape-VS2022\vendor\SDL3\include;$(SolutionDir)GhostEscape-VS2022\vendor\glm\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,7 +115,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\28443\source\repos\GhostEscape-VS2022\GhostEscape-VS2022\vendor\SDL3\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)GhostEscape-VS2022\vendor\SDL3\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL3_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -138,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\core\affiliate\text_label.cpp" />
+    <ClCompile Include="src\scene_title.cpp" />
     <ClCompile Include="src\screen\hud_skill.cpp" />
     <ClCompile Include="src\screen\hud_stats.cpp" />
     <ClCompile Include="src\core\actor.cpp" />
@@ -166,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\affiliate\text_label.h" />
+    <ClInclude Include="src\scene_title.h" />
     <ClInclude Include="src\screen\hud_skill.h" />
     <ClInclude Include="src\screen\hud_stats.h" />
     <ClInclude Include="src\core\actor.h" />

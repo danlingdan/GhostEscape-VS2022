@@ -32,7 +32,7 @@ public:
     auto getTexture() const { return texture_; }
     virtual void setTexture(const Texture &texture);
     auto getSize() const { return size_; }
-    void setSize(const glm::vec2 &size) { size_ = size; }
+    void setSize(const glm::vec2& size) { ObjectAffiliate::setSize(size); }
     auto getOffset() const { return offset_; }
     void setOffset(const glm::vec2 &offset) { offset_ = offset; }
     auto getAngle() const { return texture_.angle; }
