@@ -215,6 +215,16 @@ void Game::drawBoundary(const glm::vec2 &top_left, const glm::vec2 &botton_right
     SDL_SetRenderDrawColorFloat(renderer_, 0, 0, 0, 1);
 }
 
+bool Game::isMouseRect(const glm::vec2& top_left, const glm::vec2& botton_right)
+{
+    if (mouse_position_.x >= top_left.x && mouse_position_.x <= botton_right.x &&
+        mouse_position_.y >= top_left.y && mouse_position_.y <= botton_right.y) 
+    {
+        return true;
+    }
+    return false;
+}
+
 void Game::setScore(int score)
 {
     score_ = score;

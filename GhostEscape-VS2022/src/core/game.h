@@ -70,6 +70,9 @@ public:
     void drawGrid(const glm::vec2 &top_left, const glm::vec2 &botton_right, float grid_width, SDL_FColor fcolor);
     void drawBoundary(const glm::vec2 &top_left, const glm::vec2 &botton_right, float boundary_width, SDL_FColor fcolor);
 
+    // utility
+    bool isMouseRect(const glm::vec2& top_left, const glm::vec2& botton_right);
+
     // getter
     auto getScreenSize() const { return screen_size_; }
     Scene *getCurrentScene() const { return current_scene_; }
@@ -78,6 +81,7 @@ public:
     SDL_MouseButtonFlags getMouseButtons() const { return mouse_buttons_; }
 
     // setter
+    void quit() { is_running_ = false; }
 
     // Score
     void setScore(int score);

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="src\core\affiliate\text_label.cpp" />
     <ClCompile Include="src\scene_title.cpp" />
+    <ClCompile Include="src\screen\hud_button.cpp" />
     <ClCompile Include="src\screen\hud_skill.cpp" />
     <ClCompile Include="src\screen\hud_stats.cpp" />
     <ClCompile Include="src\core\actor.cpp" />
@@ -170,6 +171,7 @@
   <ItemGroup>
     <ClInclude Include="src\core\affiliate\text_label.h" />
     <ClInclude Include="src\scene_title.h" />
+    <ClInclude Include="src\screen\hud_button.h" />
     <ClInclude Include="src\screen\hud_skill.h" />
     <ClInclude Include="src\screen\hud_stats.h" />
     <ClInclude Include="src\core\actor.h" />
@@ -196,6 +198,9 @@
     <ClInclude Include="src\weapon_thunder.h" />
     <ClInclude Include="src\world\effect.h" />
     <ClInclude Include="src\world\spell.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\fuck-u-code.exe" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
