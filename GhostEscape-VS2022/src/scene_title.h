@@ -23,6 +23,7 @@ public:
     void render() override;
     void clean() override;
 
+    virtual void loadData(const std::string& file_path) override;
 private:
     void renderTitleBackground();
     void updateColor();

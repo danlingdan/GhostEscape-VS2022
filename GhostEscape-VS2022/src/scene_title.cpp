@@ -3,11 +3,14 @@
 #include "screen/hud_button.h"
 #include "scene_main.h"
 #include <cmath>
+#include <fstream>
 
 
 void SceneTitle::init()
 {
     Scene::init();
+
+    loadData("assets/score.dat");
 
     game_.playMusic("assets/bgm/Spooky music.mp3");
 
@@ -92,6 +95,19 @@ void SceneTitle::render()
 void SceneTitle::clean()
 {
     Scene::clean();
+}
+
+void SceneTitle::loadData(const std::string& file_path)
+{
+    int score = 0;
+
+    std::ifstream file(file_path, std::ios::binary);  
+    if (file.is_open()) {
+        file.read(reinterpret_cast<char*>(&score), sizeof(score));
+        file.close(); 
+    }
+
+    game_.setHighScore(score);
 }
 
 void SceneTitle::renderTitleBackground()

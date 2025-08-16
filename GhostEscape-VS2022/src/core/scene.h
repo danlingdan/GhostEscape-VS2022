@@ -25,6 +25,10 @@ public:
     virtual void render() override;
     virtual void clean() override;
 
+    // data save and load
+    virtual void saveData(const std::string& file_path) {}
+    virtual void loadData(const std::string& file_path) {}
+
     // getter and setter
     auto worldToScreen(const glm::vec2 &world_position) const { return world_position - camera_position_; }
     auto screenToWorld(const glm::vec2 &screen_position) const { return screen_position + camera_position_; }
