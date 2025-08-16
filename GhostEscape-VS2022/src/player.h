@@ -5,6 +5,7 @@
 #include "world/effect.h"
 #include "weapon_thunder.h"
 
+class Timer;
 class Player : public Actor
 {
 protected:
@@ -16,6 +17,7 @@ protected:
 
     WeaponThunder *weapon_thunder_ = nullptr;
 
+    Timer* flash_timer_ = nullptr;
 public:
     virtual void init() override;
     virtual bool handleEvents(SDL_Event &event) override;

@@ -9,6 +9,7 @@
 #include "screen/hud_text.h"
 #include "screen/hud_button.h"
 #include "scene_title.h"
+#include "raw/timer.h"
 
 void SceneMain::init()
 {
@@ -23,6 +24,8 @@ void SceneMain::init()
     player_->init();
     player_->setPosition(world_size_ / 2.0f);
     addChild(player_);
+
+    end_timer_ = Timer::addTimerChild(this);
 
     spawer_ = new Spawer();
     spawer_->init();
@@ -63,6 +66,12 @@ void SceneMain::update(float dt)
     checkButtonPause();
     checkButtonRestart();
     checkButtonBack();
+
+    if (player_ && !player_->getActive())
+    {
+        end_timer_->start();
+    }
+    checkEndTimer();
 }
 
 void SceneMain::render()
@@ -96,14 +105,8 @@ void SceneMain::checkButtonPause()
         return;
     }
 
-    if (is_pause_)
-    {
-        resume();
-    }
-    else
-    {
-        pasue();
-    }
+    if (is_pause_) resume();
+    else pause();
 }
 
 void SceneMain::checkButtonRestart()
@@ -113,6 +116,7 @@ void SceneMain::checkButtonRestart()
         return;
     }
 
+    game_.setScore(0);
     auto scene = new SceneMain();
     game_.safeChangeScene(scene);
 }
@@ -124,6 +128,29 @@ void SceneMain::checkButtonBack()
         return;
     }
 
+    game_.setScore(0);
     auto scene = new SceneTitle();
     game_.safeChangeScene(scene);
+}
+
+void SceneMain::checkEndTimer()
+{
+    if (!end_timer_->timeOut()) return;  // 如果计时器未超时，直接返回
+
+    // 计时器超时，显示死亡画面
+    pause();  // 暂停游戏
+
+    // 放大并居中重启按钮
+    button_restart_->setRenderPosition(game_.getScreenSize() / 2.0f - glm::vec2(200.f, 0.0f));
+    button_restart_->setScale(3.0f);
+
+    // 放大并居中返回按钮
+    button_back_->setRenderPosition(game_.getScreenSize() / 2.0f + glm::vec2(200.f, 0.0f));
+    button_back_->setScale(3.0f);
+
+    // 隐藏暂停按钮
+    button_pause_->setActive(false);
+
+    // 停止计时器
+    end_timer_->stop();
 }

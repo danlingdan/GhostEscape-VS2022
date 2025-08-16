@@ -7,6 +7,7 @@ class UIMouse;
 class HUDStats;
 class HUDText;
 class HUDButton;
+class Timer;
 class SceneMain : public Scene
 {
 
@@ -20,6 +21,7 @@ class SceneMain : public Scene
     HUDButton* button_restart_ = nullptr;
     HUDButton* button_back_ = nullptr;
 
+    Timer* end_timer_ = nullptr;
 public:
     SceneMain() = default;
     virtual ~SceneMain() = default;
@@ -38,4 +40,6 @@ private:
     void checkButtonPause();
     void checkButtonRestart();
     void checkButtonBack();
+
+    void checkEndTimer();
 };

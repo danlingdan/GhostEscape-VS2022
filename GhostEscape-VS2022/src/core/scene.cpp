@@ -161,3 +161,17 @@ void Scene::removeChild(Object *child)
         break;
     }
 }
+
+void Scene::pause()
+{
+    is_pause_ = true;
+    game_.pauseSound();  
+    game_.pauseMusic();  
+}
+
+void Scene::resume()
+{
+    is_pause_ = false;
+    game_.resumeSound(); 
+    game_.resumeMusic(); 
+}

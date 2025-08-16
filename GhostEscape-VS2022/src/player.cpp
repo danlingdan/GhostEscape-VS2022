@@ -3,10 +3,15 @@
 #include "core/affiliate/coilder.h"
 #include "raw/stats.h"
 #include "core/affiliate/text_label.h"
+#include "raw/timer.h"
 
 void Player::init()
 {
     Actor::init();
+
+    flash_timer_ = Timer::addTimerChild(this, 0.4f);  // 创建一个周期为0.4秒的计时器
+    flash_timer_->start();
+
     max_speed_ = 500.0f;
     sprite_idle_ = SpriteAnim::addSpriteAnimChild(this, "assets/sprite/ghost-idle.png", 2.0);
     sprite_move_ = SpriteAnim::addSpriteAnimChild(this, "assets/sprite/ghost-move.png", 2.0);
@@ -41,6 +46,10 @@ void Player::update(float dt)
 
 void Player::render()
 {
+    if (stats_->getIsInvinsible() && flash_timer_->getProgress() < 0.5f) {
+        return;  // 如果处于无敌状态且计时器进度小于50%，则不渲染（实现闪烁效果）
+    }
+
     Actor::render();
 }
 

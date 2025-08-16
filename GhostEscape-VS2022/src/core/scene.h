@@ -40,6 +40,6 @@ public:
     virtual void addChild(Object *child) override;
     virtual void removeChild(Object *child) override;
 
-    void pasue() { is_pause_ = true; }
-    void resume() { is_pause_ = false; }
+    void pause();
+    void resume();
 };

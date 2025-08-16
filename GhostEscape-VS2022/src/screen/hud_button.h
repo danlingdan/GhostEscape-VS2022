@@ -36,6 +36,7 @@ public:
 	auto getSpriteNormal() const { return sprite_normal_; }
 	auto getSpriteHover() const { return sprite_hover_; }
 	auto getSpritePress() const { return sprite_press_; }
+	void setScale(float scale);
 	//void setSpriteNormal(Sprite* sprite) { sprite_normal_ = sprite; }
 	//void setSpriteHover(Sprite* sprite) { sprite_hover_ = sprite; }
 	//void setSpritePress(Sprite* sprite) { sprite_press_ = sprite; }
