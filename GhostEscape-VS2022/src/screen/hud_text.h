@@ -10,6 +10,7 @@ protected:
     TextLabel* text_label_ = nullptr;
     Sprite* sprite_bg_ = nullptr;
     glm::vec2 size_ = glm::vec2(0, 0);      // 背景图片的大小
+
 public:
     static HUDText* addHUDTextChild(Object* parent, const std::string& text, glm::vec2 render_pos, glm::vec2 size, const std::string& font_path = "assets/font/VonwaonBitmap-16px.ttf", int font_size = 32, const std::string& bg_path = "assets/UI/Textfield_01.png", Anchor anchor = Anchor::CENTER);
 
@@ -24,4 +25,6 @@ public:
     void setSize(const glm::vec2& size);
 
     void setBackgroud(const std::string& file_path);
+
+    void setBgSizeByText(float margin = 50.0f);
 };

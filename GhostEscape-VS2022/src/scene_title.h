@@ -3,6 +3,7 @@
 #include "core/scene.h"
 
 class HUDButton;
+class HUDText;
 class SceneTitle : public Scene
 {
 protected:
@@ -12,6 +13,8 @@ protected:
     HUDButton* button_start_ = nullptr;    // start
     HUDButton* button_credits_ = nullptr;  // credit
     HUDButton* button_quit_ = nullptr;     // quit
+
+    HUDText* credits_text_ = nullptr;
 
 public:
     void init() override;

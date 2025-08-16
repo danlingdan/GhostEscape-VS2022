@@ -26,3 +26,9 @@ void HUDText::setBackgroud(const std::string& file_path)
     else sprite_bg_ = Sprite::addSpriteChild(this, file_path, 1, Anchor::CENTER);
 }
 
+void HUDText::setBgSizeByText(float margin)
+{
+    auto text_size = text_label_->getSize();
+    setSize(text_size + glm::vec2(margin, margin));
+}
+

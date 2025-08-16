@@ -12,13 +12,15 @@ protected:
 
 public:
     static TextLabel* addTextLabelChild(ObjectScreen* parent, const std::string& text, const std::string& font_path, int font_size, Anchor anchor = Anchor::CENTER);
+
     virtual void render() override;
     virtual void clean() override;
+
     // setters and getters
-    void setFont(const std::string& font_path, int font_size);      // init() 之后需要立刻调用
+    void setFont(const std::string& font_path, int font_size);      // init() 之后立刻调用
     void setFontPath(const std::string& font_path);
     void setFontSize(int font_size);
-    void setText(std::string ttf_text) { TTF_SetTextString(ttf_text_, ttf_text.c_str(), ttf_text.length()); }
+    void setText(std::string ttf_text);
     std::string getText() const { return ttf_text_->text; }
 
 private:

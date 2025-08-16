@@ -77,6 +77,7 @@ public:
 
     // utility
     bool isMouseRect(const glm::vec2& top_left, const glm::vec2& botton_right);
+    std::string loadTextFile(const std::string& file_path);
 
     // getter
     auto getScreenSize() const { return screen_size_; }
