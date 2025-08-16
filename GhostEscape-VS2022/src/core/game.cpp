@@ -9,6 +9,13 @@ void Game::run()
     {
         auto start = SDL_GetTicksNS();
 
+        // change scene
+        if (next_scene_)
+        {
+            changeScene(next_scene_);
+            next_scene_ = nullptr;
+        }
+
         handleEvents();
         update(dt_);
         render();
@@ -136,6 +143,17 @@ void Game::clean()
     Mix_CloseAudio();
     Mix_Quit();
     SDL_Quit();
+}
+
+void Game::changeScene(Scene* scene)
+{
+    if (current_scene_)
+    {
+        current_scene_->clean();
+        delete current_scene_;
+    }
+    current_scene_ = scene;
+    current_scene_->init();
 }
 
 void Game::renderTexture(const Texture &texture, const glm::vec2 &position, const glm::vec2 &size,const glm::vec2 &mask)

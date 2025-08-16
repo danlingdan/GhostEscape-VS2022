@@ -25,4 +25,6 @@ private:
     void updateColor();
 
     void checkButtonQuit();
+    void checkButtonStart();
+    void checkButtonCredits();
 };

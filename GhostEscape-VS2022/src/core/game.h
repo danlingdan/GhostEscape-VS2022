@@ -30,6 +30,7 @@ class Game
     float dt_ = 0.0f;
 
     Scene *current_scene_ = nullptr;
+    Scene* next_scene_ = nullptr;
 
     AssetStore *asset_store_ = nullptr;
 
@@ -54,6 +55,10 @@ public:
     void render();
     void clean();
 
+    void changeScene(Scene* scene);
+    void safeChangeScene(Scene* scene) { next_scene_ = scene; }
+
+    // render
     void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size, const glm::vec2& mask = glm::vec2(1.0));
     void renderFillCircle(const glm::vec2 &position, const glm::vec2 &size, float alpha);
     void renderHBar(const glm::vec2 &position, const glm::vec2 &size, float percent, SDL_FColor fcolor);

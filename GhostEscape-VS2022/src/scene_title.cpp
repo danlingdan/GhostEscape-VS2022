@@ -1,6 +1,7 @@
 #include "scene_title.h"
 #include "screen/hud_text.h"
 #include "screen/hud_button.h"
+#include "scene_main.h"
 #include <cmath>
 
 
@@ -19,6 +20,20 @@ void SceneTitle::init()
         "assets/UI/A_Quit2.png",   // hover
         "assets/UI/A_Quit3.png",   // press
         2.0f);                     // scale
+
+    button_start_ = HUDButton::addHUDButtonChild(this,
+        game_.getScreenSize() / 2.0f + glm::vec2(-200, 200),
+        "assets/UI/A_Start1.png",   // normal
+        "assets/UI/A_Start2.png",   // hover
+        "assets/UI/A_Start3.png",   // press
+        2.0f);
+
+    button_credits_ = HUDButton::addHUDButtonChild(this,
+        game_.getScreenSize() / 2.0f + glm::vec2(0, 200),
+        "assets/UI/A_Credits1.png", 
+        "assets/UI/A_Credits2.png", 
+        "assets/UI/A_Credits3.png",
+        2.0f);
 }
 
 void SceneTitle::handleEvents(SDL_Event& event)
@@ -32,6 +47,7 @@ void SceneTitle::update(float dt)
     color_timer_ += dt;
     updateColor();
     checkButtonQuit();
+    checkButtonStart();
 }
 
 void SceneTitle::render()
@@ -67,5 +83,14 @@ void SceneTitle::checkButtonQuit()
     if (button_quit_->getIsTrigger())
     {
         game_.quit();
+    }
+}
+
+void SceneTitle::checkButtonStart()
+{
+    if (button_start_->getIsTrigger())
+    {
+        auto scene = new SceneMain();
+        game_.safeChangeScene(scene);
     }
 }

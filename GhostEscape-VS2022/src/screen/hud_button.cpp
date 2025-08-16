@@ -46,7 +46,7 @@ void HUDButton::handleEvents(SDL_Event& event)
 		{
 			is_press_ = false;
 			if (is_hover_) 
-			{  // 只有当鼠标悬停在按钮上放开时，才视为触发按钮
+			{  // 只有当鼠标悬停在按钮上放开时，才触发按钮
 				is_trigger_ = true;
 			}
 		}
