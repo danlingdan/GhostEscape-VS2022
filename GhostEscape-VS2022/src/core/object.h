@@ -21,7 +21,7 @@ public:
     virtual ~Object() = default;
 
     virtual void init() {}
-    virtual void handleEvents(SDL_Event &event);
+    virtual bool handleEvents(SDL_Event &event);
     virtual void update(float dt);
     virtual void render();
     virtual void clean();

@@ -21,7 +21,7 @@ public:
 		Anchor anchor = Anchor::CENTER);
 
 	virtual void update(float dt) override;
-	virtual void handleEvents(SDL_Event& event) override;
+	virtual bool handleEvents(SDL_Event& event) override;
 
 	void checkHover();
 	void checkState();

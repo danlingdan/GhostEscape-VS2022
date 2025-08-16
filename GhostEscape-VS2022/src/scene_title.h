@@ -18,7 +18,7 @@ protected:
 
 public:
     void init() override;
-    void handleEvents(SDL_Event& event) override;
+    bool handleEvents(SDL_Event& event) override;
     void update(float dt) override;
     void render() override;
     void clean() override;

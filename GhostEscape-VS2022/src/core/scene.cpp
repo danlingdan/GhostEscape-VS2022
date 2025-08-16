@@ -1,46 +1,63 @@
 #include "scene.h"
 
-void Scene::handleEvents(SDL_Event &event)
+bool Scene::handleEvents(SDL_Event &event)
 {
-    Object::handleEvents(event);
+
     for (auto &child : children__screen_)
     {
         if (child->getActive())
         {
-            child->handleEvents(event);
+            if (child->handleEvents(event))
+            {
+                return true;
+            }
         }
     }
-    for (auto &child : children_world_)
+
+    if (!is_pause_)
     {
-        if (child->getActive())
+        Object::handleEvents(event);
+
+        for (auto& child : children_world_)
         {
-            child->handleEvents(event);
+            if (child->getActive())
+            {
+                if (child->handleEvents(event))
+                {
+                    return true;
+                }
+            }
         }
     }
+
+    return false;
 }
 
 void Scene::update(float dt)
 {
-    Object::update(dt);
-
-    for (auto it = children_world_.begin(); it != children_world_.end();)
+    if (!is_pause_)
     {
-        auto child = *it;
-        if (child->getNeedRemove())
+        Object::update(dt);
+
+        for (auto it = children_world_.begin(); it != children_world_.end();)
         {
-            it = children_world_.erase(it);
-            child->clean();
-            delete child;
-            child = nullptr;
-            // SDL_Log("DEL!\n");
-        }
-        else
-        {
-            if (child->getActive())
+            auto child = *it;
+            if (child->getNeedRemove())
             {
-                child->update(dt);
+                it = children_world_.erase(it);
+                child->clean();
+                delete child;
+                child = nullptr;
+                // SDL_Log("DEL!\n");
             }
-            ++it;
+            else
+            {
+                if (child->getActive())
+                {
+                    child->update(dt);
+                }
+                ++it;
+            }
         }
     }
 

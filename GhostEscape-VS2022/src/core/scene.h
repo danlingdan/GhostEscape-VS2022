@@ -14,12 +14,13 @@ protected:
     std::vector<ObjectWorld *> children_world_;
     std::vector<ObjectScreen *> children__screen_;
 
+    bool is_pause_ = false;
 public:
     Scene() = default;
     virtual ~Scene() = default;
 
     virtual void init() override {}
-    virtual void handleEvents(SDL_Event &event) override;
+    virtual bool handleEvents(SDL_Event &event) override;
     virtual void update(float dt) override;
     virtual void render() override;
     virtual void clean() override;
@@ -33,7 +34,12 @@ public:
     void setWorldSize(const glm::vec2 &world_size) { world_size_ = world_size; }
     auto &getChildrenWorld() { return children_world_; }
     auto &getChildrenScreen() { return children__screen_; }
+    auto getIsPause() const { return is_pause_; }
+    void setIsPause(bool is_pause) { is_pause_ = is_pause; }
 
     virtual void addChild(Object *child) override;
     virtual void removeChild(Object *child) override;
+
+    void pasue() { is_pause_ = true; }
+    void resume() { is_pause_ = false; }
 };
